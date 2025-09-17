@@ -1,0 +1,12 @@
+[phases.setup]
+aptPkgs = []
+nixPkgs = ["hugo", "caddy"]
+
+[phases.build]
+cmds = ["hugo --minify --config config.toml"]  # 如果你的配置文件不是默认的 config.toml，请用 --config 指定
+
+[environment]
+HUGO_VERSION = "v0.121.2-6d5b44305eaa9d0a157946492a6f319da38de154+extended"  # 建议指定你已知兼容的版本
+
+[[nixpacks.included_files]]
+paths = ["/public"]  # 告诉 Nixpacks 将 public 目录包含到最终镜像中
